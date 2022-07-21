@@ -1,0 +1,7 @@
+# IDE
+.vscode
+.idea/
+.DS_Store
+
+custom/*
+!custom/README.md

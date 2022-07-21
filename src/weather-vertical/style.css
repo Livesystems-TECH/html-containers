@@ -1,0 +1,23 @@
+html {
+	height: 100%;
+	width: 100%;
+}
+body {
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	background-color: #324e72;
+	font-family: 'Comfortaa', cursive;
+	overflow: hidden;
+}
+.wrapper{
+	margin: 0 50px;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+.container {
+	margin-top: -100px;
+}

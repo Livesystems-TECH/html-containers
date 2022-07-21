@@ -1,0 +1,168 @@
+<!--
+	SPDX-FileCopyrightText: (c) 2022 Livesystems DOOH AG
+	SPDX-License-Identifier: MIT
+-->
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Wettaaaa</title>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="common.css">
+		<link rel="stylesheet" href="sun.css">
+		<link rel="stylesheet" href="sun-cloud.css">
+		<link rel="stylesheet" href="rain.css">
+		<link rel="stylesheet" href="thunder.css">
+		<link rel="stylesheet" href="cloud.css">
+		<script src="fps.js" defer></script>
+		<script src="script.js" defer></script>
+	</head>
+	<body>
+		<div class="wrapper" id="wrapper">
+			<div class="container">
+				<div id="place-title" class="title place-title">City</div>
+				<div id="day-title-1" class="title day-title">day 1</div>
+				<div id="cards-1" class="cards">
+					<div id="period-morning-1" class="period-card">
+					</div>
+					<div id="period-midday-1" class="period-card">
+					</div>
+					<div id="period-evening-1" class="period-card">
+					</div>
+				</div>
+				<br />
+				<br />
+				<div id="day-title-2" class="title day-title">day 2</div>
+				<div id="cards-2" class="cards">
+					<div id="period-morning-2" class="period-card">
+					</div>
+					<div id="period-midday-2" class="period-card">
+					</div>
+					<div id="period-evening-2" class="period-card">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="collection" class="hidden">
+			<div id="ls-sun-widget" class="widget ls-sun">
+				<div class="title period-title"></div>
+				<div class="content-center">
+					<div class="content">
+						<div class="sun rays">
+							<div class="ray-wrap">
+								<div class="ray r-1"></div>
+								<div class="ray r-4"></div>
+							</div>
+							<div class="ray-wrap">
+								<div class="ray r-2"></div>
+								<div class="ray r-5"></div>
+							</div>
+							<div class="ray-wrap">
+								<div class="ray r-3"></div>
+								<div class="ray r-6"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="title temperature"></div>
+			</div>
+			<div id="ls-sun-cloud-widget" class="widget ls-sun-cloud">
+				<div class="title period-title"></div>
+				<div class="content-center">
+					<div class="content">
+						<div class="sun big">
+						</div>
+						<div class="cloud-wrapper">
+							<div class="cloud">
+								<ul>
+									<li></li>
+									<li></li>
+									<li></li>
+									<li></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="title temperature"></div>
+			</div>
+			<div id="ls-rain-widget" class="widget ls-rain">
+				<div class="title period-title"></div>
+				<div class="content-center">
+					<div class="content">
+						<div class="cloud-wrapper">
+							<div class="cloud">
+								<ul>
+									<li></li>
+									<li></li>
+									<li></li>
+									<li></li>
+								</ul>
+							</div>
+						</div>
+						<div class="simple-rain">
+							<ul>
+								<li></li>
+								<li></li>
+								<li></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="title temperature">18°</div>
+			</div>
+			<div id="ls-thunder-widget" class="widget ls-thunder">
+				<div class="thunder-bg">
+					<div class="title period-title"></div>
+					<div class="content-center">
+						<div class="content">
+							<div class="cloud-wrapper">
+								<div class="cloud">
+									<ul>
+										<li></li>
+										<li></li>
+										<li></li>
+										<li></li>
+									</ul>
+								</div>
+								<div class="thunder"></div>
+							</div>
+						</div>
+					</div>
+					<div class="title temperature"></div>
+				</div>
+			</div>
+			<div id="ls-cloud-widget" class="widget ls-cloud">
+				<div class="title period-title"></div>
+				<div class="content-center">
+					<div class="content w100">
+						<div class="cloud-wrapper">
+							<div class="cloud cloud-1">
+								<ul>
+									<li></li><li></li><li></li><li></li>
+								</ul>
+							</div>
+							<div class="cloud cloud-2">
+								<ul>
+									<li></li><li></li><li></li><li></li>
+								</ul>
+							</div>
+							<div class="cloud other-cloud cloud-3">
+								<ul>
+									<li></li><li></li><li></li><li></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="title temperature"></div>
+			</div>
+		</div>
+	</body>
+</html>

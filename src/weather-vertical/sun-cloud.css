@@ -1,0 +1,63 @@
+.cloud-wrapper {
+    position: relative;
+    bottom: -10px;
+    left: 200px;
+    z-index: 2;
+    opacity: 0;
+    margin-bottom: 15px;
+    padding-top: 10px;
+}
+.period-card.in .ls-sun-cloud .cloud-wrapper {
+    opacity: 1;
+    left: -15px;
+    transition: all 1s 1s;
+}
+.cloud {
+    position: absolute;
+    bottom: 0;
+    z-index: 5;
+    background: #ebfcff;
+}
+.cloud:before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 20px;
+    width: 90px;
+    height: 20px;
+    background: inherit;
+}
+.cloud ul {
+    background-color: inherit;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.cloud ul li {
+    width: 45px;
+    height: 45px;
+    background: inherit;
+    float: left;
+    border-radius: 360px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+.cloud ul li:nth-child(2) {
+    width: 65px;
+    height: 65px;
+    bottom: 12px;
+    left: 20px;
+}
+.cloud ul li:nth-child(3) {
+    width: 55px;
+    height: 55px;
+    bottom: 5px;
+    left: 55px;
+}
+.cloud ul li:last-child {
+    width: 45px;
+    height: 45px;
+    bottom: 0;
+    left: 85px;
+}

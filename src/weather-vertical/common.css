@@ -1,0 +1,86 @@
+.hidden {
+    visibility: hidden;
+}
+
+.cards {
+    margin-left: -50px;
+    margin-right: -50px;
+    padding: 15px 50px 20px 50px;
+    background-color: #6f8aac;
+    display: flex;
+    justify-content: center;
+    transform-origin: center top;
+    gap: 40px;
+    opacity: 0;
+    transition: opacity .5s;
+}
+.cards.in {
+    opacity: 1;
+}
+
+div.period-card {
+    height: 240px;
+    width: 180px;
+    border-radius: 8px;
+    opacity: 0;
+    padding: 10px;
+    box-shadow: none;
+    position: relative;
+    z-index: 1;
+    transition: opacity 1s;
+}
+div.content-center {
+    display: flex;
+    justify-content: center;
+}
+
+.w100 { width: 100% }
+
+div.content { height: 100%; }
+div.period-card.in {
+    opacity: 1;
+    background-color: #1d3a5d;
+    box-shadow: 0 2px 5px 1px #1f1f1f;
+}
+div.period-card:nth-child(2) {
+    z-index: 10;
+}
+div.period-card:nth-child(3) {
+    z-index: 20;
+}
+
+/* Typography */
+.title {
+    display: block;
+    color: #d6ffef;
+}
+.place-title {
+    font-size: 34px;
+    opacity: 0;
+    margin-bottom: 10px;
+    transition: opacity .5s;
+}
+.day-title {
+    font-size: 26px;
+    margin-bottom: 10px;
+    opacity: 0;
+    transition: opacity .5s;
+}
+.day-title.in, .place-title.in {
+    opacity: 1;
+}
+.period-title { font-size: 24px; margin-bottom: 15px; }
+.temperature {
+    font-size: 28px;
+    font-weight: 700;
+    position: absolute;
+    bottom: 10px;
+}
+.temperature, .period-title {
+    margin-left: 10px;
+    opacity: 0;
+    transition: opacity 2s;
+}
+.in .temperature, .in .period-title {
+    opacity: 1;
+}

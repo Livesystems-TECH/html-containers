@@ -1,0 +1,218 @@
+<!--
+	SPDX-FileCopyrightText: (c) 2022 Livesystems DOOH AG
+	SPDX-License-Identifier: MIT
+-->
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Clock</title>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="clock.css">
+		<link rel="stylesheet" href="flip-clock.css">
+		<script src="fps.js" defer></script>
+		<script src="script.js" defer></script>
+	</head>
+	<body>
+		<div id="clock-container" class="wrapper">
+			<div id="clock" class="clock">
+				<div class="center">
+					<div class="dynamic"></div>
+					<div class="origin-center round circle-1"></div>
+					<div class="origin-center round face"></div>
+					<div class="logo origin-center">
+						<img id="logo" src="logo.svg" />
+					</div>
+					<div class="anchor hour">
+						<div class="element thin-hand"></div>
+						<div class="element fat-hand"></div>
+					</div>
+					<div class="anchor minute">
+						<div class="element thin-hand"></div>
+						<div class="element fat-hand minute-hand"></div>
+					</div>
+					<div class="anchor second">
+						<div class="element second-hand second-hand-front"></div>
+						<div class="element second-hand second-hand-back"></div>
+					</div>
+					<div class="origin-center round circle-2"></div>
+				</div>
+				<div class="flip-clock origin-center">
+					<div id="flip-clock" class="flip-container origin-center play">
+						<div class="time-block">
+							<ul id="hours-l" class="flip-card">
+								<li class="previous">
+									<div class="flip-digit">
+										<div class="digit-part up">
+											<div class="shadow"></div>
+											<div class="digit"></div>
+										</div>
+										<div class="digit-part down">
+											<div class="shadow"></div>
+											<div class="digit"></div>
+										</div>
+									</div>
+								</li>
+								<li class="next">
+									<div class="flip-digit">
+										<div class="digit-part up">
+											<div class="shadow"></div>
+											<div class="digit"></div>
+										</div>
+										<div class="digit-part down">
+											<div class="shadow"></div>
+											<div class="digit"></div>
+										</div>
+									</div>
+								</li>
+								<div class="digit-middle"></div>
+							</ul>
+							<ul id="hours-r" class="flip-card">
+								<li class="previous">
+									<div class="flip-digit">
+										<div class="digit-part up">
+											<div class="shadow"></div>
+											<div class="digit"></div>
+										</div>
+										<div class="digit-part down">
+											<div class="shadow"></div>
+											<div class="digit"></div>
+										</div>
+									</div>
+								</li>
+								<li class="next">
+									<div class="flip-digit">
+										<div class="digit-part up">
+											<div class="shadow"></div>
+											<div class="digit"></div>
+										</div>
+										<div class="digit-part down">
+											<div class="shadow"></div>
+											<div class="digit"></div>
+										</div>
+									</div>
+								</li>
+								<div class="digit-middle"></div>
+							</ul>
+						</div>
+						<div class="time-block">
+							<ul id="minutes-l" class="flip-card">
+								<li class="previous">
+									<div class="flip-digit">
+										<div class="digit-part up">
+											<div class="shadow"></div>
+											<div class="digit"></div>
+										</div>
+										<div class="digit-part down">
+											<div class="shadow"></div>
+											<div class="digit"></div>
+										</div>
+									</div>
+								</li>
+								<li class="next">
+									<div class="flip-digit">
+										<div class="digit-part up">
+											<div class="shadow"></div>
+											<div class="digit"></div>
+										</div>
+										<div class="digit-part down">
+											<div class="shadow"></div>
+											<div class="digit"></div>
+										</div>
+									</div>
+								</li>
+								<div class="digit-middle"></div>
+							</ul>
+							<ul id="minutes-r" class="flip-card">
+								<li class="previous">
+									<div class="flip-digit">
+										<div class="digit-part up">
+											<div class="shadow"></div>
+											<div class="digit"></div>
+										</div>
+										<div class="digit-part down">
+											<div class="shadow"></div>
+											<div class="digit"></div>
+										</div>
+									</div>
+								</li>
+								<li class="next">
+									<div class="flip-digit">
+										<div class="digit-part up">
+											<div class="shadow"></div>
+											<div class="digit"></div>
+										</div>
+										<div class="digit-part down">
+											<div class="shadow"></div>
+											<div class="digit"></div>
+										</div>
+									</div>
+								</li>
+								<div class="digit-middle"></div>
+							</ul>
+						</div>
+						<div class="time-block">
+							<ul id="seconds-l" class="flip-card">
+								<li class="previous">
+									<div class="flip-digit">
+										<div class="digit-part up">
+											<div class="shadow"></div>
+											<div class="digit"></div>
+										</div>
+										<div class="digit-part down">
+											<div class="shadow"></div>
+											<div class="digit"></div>
+										</div>
+									</div>
+								</li>
+								<li class="next">
+									<div class="flip-digit">
+										<div class="digit-part up">
+											<div class="shadow"></div>
+											<div class="digit"></div>
+										</div>
+										<div class="digit-part down">
+											<div class="shadow"></div>
+											<div class="digit"></div>
+										</div>
+									</div>
+								</li>
+								<div class="digit-middle"></div>
+							</ul>
+							<ul id="seconds-r" class="flip-card">
+								<li class="previous">
+									<div class="flip-digit">
+										<div class="digit-part up">
+											<div class="shadow"></div>
+											<div class="digit"></div>
+										</div>
+										<div class="digit-part down">
+											<div class="shadow"></div>
+											<div class="digit"></div>
+										</div>
+									</div>
+								</li>
+								<li class="next">
+									<div class="flip-digit">
+										<div class="digit-part up">
+											<div class="shadow"></div>
+											<div class="digit"></div>
+										</div>
+										<div class="digit-part down">
+											<div class="shadow"></div>
+											<div class="digit"></div>
+										</div>
+									</div>
+								</li>
+								<div class="digit-middle"></div>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

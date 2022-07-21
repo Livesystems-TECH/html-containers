@@ -1,0 +1,76 @@
+<html>
+    <head title="test-vertical">
+        <script>
+          document.addEventListener("DOMContentLoaded", function() {
+            const iframe = document.getElementById('iframe');
+            const startButton = document.getElementById('start');
+            const validateButton = document.getElementById('validate');
+
+            const screenHeight = window.innerHeight|| document.documentElement.clientHeight|| document.body.clientHeight;
+            const width = screenHeight * 9 / 16;
+            iframe.style.height = screenHeight - 25 + 'px';
+            iframe.style.width = width + 'px';
+            const frameWindow = iframe.contentWindow;
+            if (frameWindow && frameWindow.document) {
+              const frameWindow = iframe.contentWindow;
+              function resetIframe() {
+                frameWindow.document.open();
+                frameWindow.document.write('');
+                frameWindow.document.close();
+                frameWindow.location.reload();
+              }
+              startButton.addEventListener('click', function () {
+                resetIframe();
+                setTimeout(() =>  frameWindow.document.dispatchEvent(new CustomEvent('test')), 500)
+              });
+              validateButton.addEventListener('click', function () {
+                const invalidTimeout = setTimeout(() => alert('INVALID!\nNo response / no play started'), 1000);
+                frameWindow.onerror = function () {
+                  clearTimeout(invalidTimeout);
+                  alert('INVALID!\nErrors in container script.\nCheck browser console.');
+                  resetIframe();
+                }
+                if (!frameWindow.webContainer) return alert('INVALID!\nNo container instance found.');
+                if (!frameWindow.webContainer.data) return alert('INVALID!\nNo key-value storage found.');
+                if (!frameWindow.webContainer.testData) return alert('INVALID!\nNo test data found.');
+                ['init', 'setup', 'play'].forEach(
+                  (method) => !frameWindow.webContainer[method] && alert('INVALID\nNo "' + method + '" method found in container instance.')
+                );
+                const setupEvent = new CustomEvent('setup', {
+                  detail: Object.assign({ abc: 123 }, frameWindow.webContainer.testData)
+                });
+                frameWindow.document.addEventListener('ptvready', function () {
+                  frameWindow.document.dispatchEvent(new CustomEvent('play'))
+                })
+                frameWindow.document.addEventListener('playStarted', function () {
+                  clearTimeout(invalidTimeout);
+                  const value = frameWindow.webContainer.data.abc;
+                  const message = !value || value !== 123 ? 'INVALID!\nKey-value passing doesn\'t work.' : 'VALID';
+                  alert(message);
+                  resetIframe();
+                })
+                frameWindow.document.dispatchEvent(setupEvent);
+              });
+            }
+          });
+        </script>
+        <style>
+            * { box-sizing: border-box; }
+            body { margin: 0; display: flex; justify-content: center }
+            .wrapper { display: flex; flex-direction: column }
+            #start { height: 25px }
+            .actions { display: flex }
+            .actions button { width: 100% }
+        </style>
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="actions">
+                <button id="start">Play</button>
+                <button id="validate">Validate</button>
+            </div>
+            <iframe id="iframe" title="Test" src="index.html">
+            </iframe>
+        </div>
+    </body>
+</html>

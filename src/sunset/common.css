@@ -1,0 +1,75 @@
+.hidden {
+    visibility: hidden;
+}
+
+.cards {
+    display: flex;
+}
+
+div.period-card {
+    height: 240px;
+    width: 180px;
+    border-radius: 8px;
+    opacity: 0;
+    padding: 10px;
+    box-shadow: none;
+    position: relative;
+    margin-right: 30px;
+    z-index: 1;
+    transition: all 1s;
+}
+div.content-center {
+    display: flex;
+    justify-content: center;
+}
+
+.w100 { width: 100% }
+
+div.content { height: 100%; }
+div.period-card.in {
+    opacity: 1;
+    background-color: #1b3757;
+    box-shadow: 0 2px 5px 1px #1f1f1f;
+}
+div.period-card:nth-child(2) {
+    z-index: 10;
+}
+div.period-card:nth-child(3) {
+    z-index: 20;
+}
+
+/* Typography */
+.title {
+    display: block;
+    color: #d6ffef;
+}
+.day-title {
+    font-size: 34px;
+    margin: 5px;
+    opacity: 0;
+    transition: all .5s;
+}
+.place-title {
+    font-size: 26px;
+    margin: 5px;
+    opacity: 0;
+    transition: all .5s;
+}
+.day-title.in, .place-title.in {
+    opacity: 1;
+}
+.period-title { font-size: 24px; margin-bottom: 15px; }
+.temperature {
+    font-size: 28px;
+    font-weight: 700;
+    position: absolute;
+    bottom: 10px;
+}
+.temperature, .period-title {
+    margin-left: 10px;
+    opacity: 0;
+    transition: all 2s;
+}
+.in .temperature, .in .period-title {
+    opacity: 1;
+}

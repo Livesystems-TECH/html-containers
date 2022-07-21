@@ -1,0 +1,38 @@
+.ls-cloud .cloud-wrapper { height: 120px; top: 0; width: 100%; padding-top: 0; opacity: 1; left: 10px; }
+.ls-cloud .cloud-1, .ls-cloud .cloud-2, .ls-cloud .cloud-3 {
+    opacity: 0;
+}
+.ls-cloud .cloud-1 { opacity: 0; left: -200px; transition: all 1s .3s; }
+.ls-cloud .cloud-2 { opacity: 0; bottom: 100px; left: 200px; transition: all 1s .5s; }
+.ls-cloud .cloud-3 { opacity: 0; bottom: -100px; left: -100px; transition: all 1s .7s; }
+.period-card.in .ls-cloud .cloud-1 {
+    opacity: 1;
+    bottom: 19px;
+    left: -10px;
+    background-color: #a0b3c7;
+}
+.period-card.in .ls-cloud .cloud-2 {
+    opacity: 1;
+    bottom: 30px;
+    left: 40px;
+    background-color: #848b8f;
+}
+.period-card.in .ls-cloud .cloud-3 {
+    opacity: 1;
+    bottom: -10px;
+    left: 18px;
+    background-color: #bed1e3;
+}
+.other-cloud:before {
+    left: 30px;
+    width: 70px;
+    border-radius: 50%;
+    height: 30px;
+    bottom: -5px;
+}
+.other-cloud ul li { width: 42px; height: 42px; bottom: 1px; left: 2px; }
+.other-cloud ul li:nth-child(2) { width: 50px; height: 50px; bottom: 6px; left: 50px; }
+.other-cloud ul li:nth-child(3) { width: 55px; height: 52px; bottom: 9px; left: 17px; }
+.other-cloud ul li:nth-child(4) { width: 35px; height: 35px; bottom: 7px; left: 78px; }
+
+
