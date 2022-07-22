@@ -23,7 +23,8 @@
 
 [weather](https://codepen.io/gandboy91/full/RwQEgVz)  
 [clock](https://codepen.io/gandboy91/full/KKomxzX)  
-[sunrise/sunset](https://codepen.io/gandboy91/full/RwMGKbr)
+[sunrise/sunset](https://codepen.io/gandboy91/full/RwMGKbr)   
+[river temperature](https://codepen.io/gandboy91/full/ZExyWPG)
 
 \* *Black cityscreen is added for better look/feel impression*  
 \** *Livesystems logo is just a placeholder*
