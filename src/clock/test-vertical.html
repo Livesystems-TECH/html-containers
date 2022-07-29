@@ -14,10 +14,12 @@
             if (frameWindow && frameWindow.document) {
               const frameWindow = iframe.contentWindow;
               function resetIframe() {
-                frameWindow.document.open();
-                frameWindow.document.write('');
-                frameWindow.document.close();
-                frameWindow.location.reload();
+                  if (typeof window.webkitConvertPointFromNodeToPage !== 'function') {
+                      frameWindow.document.open();
+                      frameWindow.document.write('');
+                      frameWindow.document.close();
+                  }
+                  frameWindow.location.reload();
               }
               startButton.addEventListener('click', function () {
                 resetIframe();

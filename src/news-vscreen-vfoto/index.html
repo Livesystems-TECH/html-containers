@@ -1,0 +1,42 @@
+<!--
+	SPDX-FileCopyrightText: (c) 2022 Livesystems DOOH AG
+	SPDX-License-Identifier: MIT
+-->
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>News vscreen-vfoto</title>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="common.css">
+		<script src="base64.js" defer></script>
+		<script src="fps.js" defer></script>
+		<script src="script.js" defer></script>
+	</head>
+	<body>
+		<div id="wrapper" class="wrapper">
+			<img
+				id="news-photo"
+				class="photo"
+				alt="news-photo"
+				src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+			/>
+			<div class="nau-header">
+				<img class="nau-logo" alt="nau-logo" src="nau_logo_white.svg" />
+			</div>
+			<div class="text-wrapper">
+				<div class="text-container" id="text-container">
+					<div class="category-wrapper">
+						<span id="category" class="category"></span>
+					</div>
+					<div>
+						<span id="text" class="text"></span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

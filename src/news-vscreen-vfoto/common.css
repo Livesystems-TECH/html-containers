@@ -1,0 +1,63 @@
+img.photo {
+    height: 100%;
+}
+div.nau-header {
+    background-color: #da374c;
+    height: calc(var(--vh) * 4);
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: var(--vh);
+    display: flex;
+    justify-content: center;
+}
+.nau-header .nau-logo {
+    height: 100%;
+    transform: translate3d(0,0,0);
+}
+img.photo.zoomed {
+    height: 115%;
+    /* CSS force 3d processing trick */
+    transform: translate3d(0,0,0);
+    transition: all linear 15s;
+}
+.text-wrapper {
+    position: absolute;
+    top: calc(var(--vh) * 60);
+    left: 5%;
+    width: 80%;
+    overflow: hidden;
+    padding: 10px;
+}
+.text-container {
+    position: relative;
+    top: 0;
+    left: -100%;
+    opacity: 0;
+    color: #f5f5f5;
+    line-height: 1.25;
+    transition: all ease-out 2s, opacity ease-out 2s;
+    transform: translate3d(0,0,0);
+}
+.text-container.in {
+    opacity: 1;
+    left: 0;
+    transform: translate3d(0,0,0);
+}
+.text {
+    font-size: calc(var(--vh) * 5);
+    background-color: #da374c;
+    box-shadow: 10px 0 0 #da374c, -10px 0 0 #da374c;
+
+}
+.category-wrapper {
+    margin-left: -10px;
+    margin-bottom: 10px;
+    position: relative;
+}
+.category {
+    font-size: calc(var(--vh) * 2.5);
+    background-color: rgba(0,0,0,0.6);
+    padding: 10px;
+}

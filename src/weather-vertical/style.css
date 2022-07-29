@@ -8,7 +8,7 @@ body {
 	margin: 0;
 	padding: 0;
 	background-color: #324e72;
-	font-family: 'Comfortaa', cursive;
+	font-family: "Monaco", Monaco, monospace;
 	overflow: hidden;
 }
 .wrapper{
