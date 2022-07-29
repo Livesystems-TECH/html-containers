@@ -22,7 +22,8 @@
 ## Demo
 
 [weather](https://codepen.io/gandboy91/full/RwQEgVz)  
-[clock](https://codepen.io/gandboy91/full/KKomxzX)  
+[clock](https://codepen.io/gandboy91/full/KKomxzX)    
+[news / interesting facts](https://codepen.io/gandboy91/full/BarmOey)     
 [sunrise/sunset](https://codepen.io/gandboy91/full/RwMGKbr)   
 [water temperature](https://codepen.io/gandboy91/full/ZExyWPG)
 

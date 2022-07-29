@@ -19,6 +19,7 @@ div.wrapper {
 	display: flex;
 	justify-content: center;
 	visibility: hidden;
+	position: relative;
 }
 div.wrapper.in {
 	visibility: visible;
