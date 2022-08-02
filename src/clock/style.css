@@ -1,3 +1,6 @@
+@import 'clock.css';
+@import 'flip-clock.css';
+
 html {
 	height: 100%;
 	-webkit-font-smoothing: antialiased;

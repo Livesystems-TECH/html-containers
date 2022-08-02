@@ -69,6 +69,12 @@ Result file should be archived as a `.zip`
 - index.html with script file included (`script.js` in examples)
 - `script.js` with **musthave** functionality (LsContainer) which is included in index.html
 
+**Additional files / imports**:
+- css files should be listed as a `<link>` in index.html or be imported via css `@import`
+- js files should be listed as a `<script>` in index.html or be imported via ESM `import`.  
+:warning: In this case make sure, your `script.js` file is included as a module:     
+`<script type="module" src="script.js" defer></script>`
+
 **JS requirements**:  
 > :warning: **All listed requirements are already implemented in `LsContainer` class**   
 > which you'll find in examples. It's recommended to not overwrite existing methods.     

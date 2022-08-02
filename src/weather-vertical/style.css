@@ -1,3 +1,10 @@
+@import 'common.css';
+@import 'sun.css';
+@import 'sun-cloud.css';
+@import 'cloud.css';
+@import 'rain.css';
+@import 'thunder.css';
+
 html {
 	height: 100%;
 	width: 100%;
@@ -8,7 +15,7 @@ body {
 	margin: 0;
 	padding: 0;
 	background-color: #324e72;
-	font-family: "Monaco", Monaco, monospace;
+	font-family: 'Monaco', Monaco, monospace;
 	overflow: hidden;
 }
 .wrapper{

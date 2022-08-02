@@ -1,9 +1,11 @@
+import { base64String } from './base64.js';
+
 const TEST_DATA = {
 	animation: 'zoom',
 	category: 'WISSEN',
 	text: 'Es gibt 208 Schweizer Berge, die mehr als 3000 Meter hoch sind.',
   // ~920kb jpg image base64 encoded
-	imageSrc: window.BASE64_SOURCE || ''
+	imageSrc: base64String || ''
 }
 
 /*
