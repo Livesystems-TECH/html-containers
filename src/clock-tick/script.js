@@ -34,10 +34,11 @@ LSContainer.prototype.setup = function(event) {
 	Object.entries(detail).forEach(
 		([key, value]) => this.set(key, value)
 	);
+	this.adjustSize(400);
 	this.ready();
 };
 
-LSContainer.prototype.adjustSize = function(initialClockSize, offset = 100, initialLogoSize = 35) {
+LSContainer.prototype.adjustSize = function(initialClockSize, offset = 40) {
 	const clockElement = document.getElementById('clock');
 	if (clockElement) {
 		const screenWidth  = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
@@ -74,7 +75,6 @@ LSContainer.prototype.initClock = function() {
 			addHourSegment(i / 5);
 		}
 	}
-	this.adjustSize(425);
 	setTimeout(() => this.startClock(secondElement, minuteElement, hourElement), 0)
 }
 
@@ -154,7 +154,8 @@ LSContainer.prototype.startClock = function(secondElement, minuteElement, hourEl
 }
 
 LSContainer.prototype.play = function() {
-	window.watchFps && window.watchFps();
+	// uncomment to see live fps value on screen
+	// window.watchFps && window.watchFps();
 	this.initClock();
 	document.dispatchEvent(new Event('playStarted'));
 };

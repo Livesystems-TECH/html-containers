@@ -1,6 +1,7 @@
 # Html-containers
 
-*Html containers specification and examples*.
+*Html containers specification and examples*.    
+:information_source: Each container has its own Readme with some specifications
 
 ## Quick start
 
@@ -74,6 +75,28 @@ Result file should be archived as a `.zip`
 - js files should be listed as a `<script>` in index.html or be imported via ESM `import`.  
 :warning: In this case make sure, your `script.js` file is included as a module:     
 `<script type="module" src="script.js" defer></script>`
+- Custom fonts can be added as `.woff` files (preferably as woff has smaller size).    
+
+**Custom Fonts**   
+
+:information_source: You can easily use one of those fonts: [web safe fonts](https://www.w3schools.com/cssref/css_websafe_fonts.asp) without any additional coding.       
+To add custom font we can put it in container root folder as for example `myfont.woff`      
+then:  
+```css
+@font-face {
+	font-family: 'Myfont';
+	font-style: normal;
+	src: local(''),
+	url('myfont.woff') format('woff');
+}
+```
+and use it like this:  
+```css
+body {
+  font: Myfont, Arial, sans-serif;
+}
+```
+
 
 **JS requirements**:  
 > :warning: **All listed requirements are already implemented in `LsContainer` class**   
@@ -131,6 +154,7 @@ You'll find there also validate function to check if container is working proper
 
 ### Performance
 
+* To measure FPS live value uncomment code peace with `window.watchFps();` in `script.js`
 * Make sure that you unsubscribe all listeners and clean all intervals / timeouts by the end of script.
 * Try to avoid `infinite` transitions and prefer `setTimeout` over `setInterval`
 * Don't overload JS thread. F-12 is powerful enough but remember that JS is single-threaded.

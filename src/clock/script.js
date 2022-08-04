@@ -34,6 +34,7 @@ LSContainer.prototype.setup = function(event) {
 	Object.entries(detail).forEach(
 		([key, value]) => this.set(key, value)
 	);
+	this.adjustSize(400);
 	this.ready();
 };
 
@@ -154,8 +155,8 @@ LSContainer.prototype.startClock = function(secondElement, minuteElement, hourEl
 }
 
 LSContainer.prototype.play = function() {
-	this.adjustSize(400);
-	window.watchFps && window.watchFps();
+	// uncomment to see live fps value on screen
+	// window.watchFps && window.watchFps();
 	this.initClock();
 	document.dispatchEvent(new Event('playStarted'));
 };
