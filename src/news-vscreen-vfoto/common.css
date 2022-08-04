@@ -1,5 +1,6 @@
 img.photo {
     height: 100%;
+    transform: translate3d(0,0,0);
 }
 div.nau-header {
     background-color: #da374c;
@@ -20,13 +21,23 @@ img.photo.zoomed {
     height: 115%;
     /* CSS force 3d processing trick */
     transform: translate3d(0,0,0);
-    transition: all linear 15s;
+    transition: height linear 15s 3s;
+}
+img.photo.to-left {
+    /* CSS force 3d processing trick */
+    transform: translate3d(-10%,0,0);
+    transition: transform linear 15s 3s;
+}
+img.photo.to-right {
+    /* CSS force 3d processing trick */
+    transform: translate3d(10%,0,0);
+    transition: transform linear 15s 3s;
 }
 .text-wrapper {
     position: absolute;
-    top: calc(var(--vh) * 60);
+    top: calc(var(--vh) * 55);
     left: 5%;
-    width: 80%;
+    width: 85%;
     overflow: hidden;
     padding: 10px;
 }
@@ -36,7 +47,7 @@ img.photo.zoomed {
     left: -100%;
     opacity: 0;
     color: #f5f5f5;
-    line-height: 1.25;
+    line-height: 1.4;
     transition: all ease-out 2s, opacity ease-out 2s;
     transform: translate3d(0,0,0);
 }
@@ -46,10 +57,10 @@ img.photo.zoomed {
     transform: translate3d(0,0,0);
 }
 .text {
-    font-size: calc(var(--vh) * 5);
+    padding-bottom: calc(var(--vh) * .3);
+    font-size: calc(var(--vh) * 4.5);
     background-color: #da374c;
     box-shadow: 10px 0 0 #da374c, -10px 0 0 #da374c;
-
 }
 .category-wrapper {
     margin-left: -10px;

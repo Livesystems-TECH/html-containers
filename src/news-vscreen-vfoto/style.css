@@ -1,4 +1,12 @@
-@import 'common.css';
+@import "common.css";
+
+@font-face {
+	font-family: 'Inter';
+	font-style: normal;
+	font-display: swap;
+	src: local(''),
+	url('inter.woff') format('woff');
+}
 
 html {
 	--vh: 19.2px;
@@ -10,7 +18,7 @@ body {
 	height: 100%;
 	margin: 0;
 	padding: 0;
-	font-family: 'Arial', Arial, sans-serif;
+	font-family: Inter, Arial, sans-serif;
 	overflow: hidden;
 }
 * {

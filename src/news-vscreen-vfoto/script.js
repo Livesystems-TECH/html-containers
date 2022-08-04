@@ -1,19 +1,11 @@
-import { base64String } from './base64.js';
-
-const TEST_DATA = {
-	animation: 'zoom',
-	category: 'WISSEN',
-	text: 'Es gibt 208 Schweizer Berge, die mehr als 3000 Meter hoch sind.',
-  // ~920kb jpg image base64 encoded
-	imageSrc: base64String || ''
-}
+import content from './content.json' assert { type: 'json' };
 
 /*
  * LiveSystems webContainer
  */
 function LSContainer() {
 	this.data = {};
-	this.testData = TEST_DATA;
+	this.testData = {};
 }
 
 LSContainer.prototype.init = function () {
@@ -34,21 +26,16 @@ LSContainer.prototype.ready = function() {
 	// sends ptvready event to own document where parent frame listens to
 	document.dispatchEvent(event);
 };
-LSContainer.prototype.setup = function(event) {
-	const detail = event.detail || {};
-	Object.entries(detail).forEach(
+LSContainer.prototype.setup = function() {
+	Object.entries(content).forEach(
 		([key, value]) => this.set(key, value)
 	);
-	const imgElement = document.getElementById('news-photo');
-	if (imgElement) {
-		imgElement.src = this.get('imageSrc');
-	}
 	this.adjustSize();
 	this.ready();
 };
 LSContainer.prototype.adjustSize = function() {
-	const vh = window.innerHeight * 0.01;
-	document.documentElement.style.setProperty('--vh', `${vh}px`);
+  const vh = (window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight) * 0.01;
+  document.documentElement.style.setProperty('--vh', vh + 'px');
 }
 LSContainer.prototype.animate = function() {
 	const imgElement = document.getElementById('news-photo');
@@ -61,8 +48,10 @@ LSContainer.prototype.animate = function() {
 			imgElement.classList.add('zoomed');
 			return;
 		case 'move-to-left':
+      imgElement.classList.add('to-left');
 			return;
 		case 'move-to-right':
+			imgElement.classList.add('to-right');
 			return;
 	}
 };
@@ -84,11 +73,12 @@ LSContainer.prototype.play = function() {
 		textContainer.classList.add('in');
 		this.animate();
 	}
-	document.dispatchEvent(new Event('playStarted'));
+  const event = new Event('playStarted');
+	document.dispatchEvent(event);
 };
 
 LSContainer.prototype.emulateStart = function () {
-	this.setup({ detail: TEST_DATA });
+	this.setup();
 	this.play();
 }
 
