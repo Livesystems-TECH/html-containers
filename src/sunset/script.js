@@ -38,20 +38,19 @@ LSContainer.prototype.setup = function(event) {
 	);
 	this.ready();
 };
-LSContainer.prototype.adjustSize = function(offset = 100) {
+LSContainer.prototype.adjustSize = function() {
+	const screenHeight = window.innerHeight|| document.documentElement.clientHeight|| document.body.clientHeight;
+	const vh = screenHeight * 0.01;
+	document.documentElement.style.setProperty('--vh', vh + 'px');
+
 	const orbit = document.getElementById('orbit');
-	const orbitPath = document.getElementById('orbit-path');
 	if (orbit) {
 		const screenWidth  = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-		const screenHeight = window.innerHeight|| document.documentElement.clientHeight|| document.body.clientHeight;
 		const smallestSide = Math.min(screenWidth, screenHeight);
-		const orbitSize = smallestSide - offset;
-		orbit.style.width = orbitSize + 'px';
-		orbit.style.height = offset + 'px';
-		if (orbitPath) {
-			orbitPath.style.width = orbitSize + 'px';
-			orbitPath.style.height = orbitSize + 'px';
-		}
+		const orbitSize = smallestSide - ~~(0.1 * smallestSide);
+		document.documentElement.style.setProperty('--orbit', orbitSize + "px");
+		document.documentElement.style.setProperty('--sun', ~~(orbitSize / 8) + "px");
+		document.documentElement.style.setProperty('--font', ~~(orbitSize / 18) + "px");
 	}
 }
 LSContainer.prototype.getPeriodsData = function() {
@@ -71,18 +70,21 @@ LSContainer.prototype.getPeriodsData = function() {
 		night: sunrise + (24 * 3600 - sunset)
 	}
 };
-LSContainer.prototype.showNowTime = function(hours, minutes) {
+LSContainer.prototype.showNowTime = function(hours, minutes, showOnLeft) {
 	const sunElement = document.getElementById('sun');
 	const infoElement = document.getElementById('now-info');
-	if (sunElement && infoElement) {
+	const sunsetContainer = document.getElementById('sunset-container');
+	if (sunElement && infoElement && sunsetContainer) {
 		const nowString = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;
 		const { top, left } = sunElement.getBoundingClientRect();
-		infoElement.style.top = top + 80 + 'px';
-		infoElement.style.left = left - 100 + 'px';
+		const { top: containerTop, left: containerLeft } = sunsetContainer.getBoundingClientRect();
+		infoElement.style.top = top - containerTop + 'px';
+		infoElement.style.left = left - containerLeft + 'px';
 		infoElement.querySelector('strong').textContent = nowString;
+		const action = showOnLeft ? 'add' : 'remove';
+		infoElement.classList[action]('left');
 	}
 };
-
 LSContainer.prototype.stopAtNow = function () {
 	const date = new Date();
 	const hours = date.getHours();
@@ -91,18 +93,20 @@ LSContainer.prototype.stopAtNow = function () {
 	const nowSec = hours * 3600 + minutes * 60 + seconds;
 	const { sunrise, sunset, day, night } = this.getPeriodsData();
 	let timeout = CYCLE_DURATION;
+	let fraction;
 	if (nowSec > sunrise && nowSec < sunset) {
-		const fraction = (nowSec - sunrise) / (day * 2);
+		fraction = (nowSec - sunrise) / (day * 2);
 		timeout = CYCLE_DURATION * fraction;
 	} else {
 		const beforeMidnight = 24 * 3600 - sunset;
 		const timeGone = nowSec > sunset ? nowSec - sunset : beforeMidnight + nowSec;
-		const fraction = timeGone / (night * 2);
+		fraction = timeGone / (night * 2);
     timeout = CYCLE_DURATION / 2 + CYCLE_DURATION * fraction;
 	}
 	setTimeout(() => {
 		this.stopAnimation();
-		this.showNowTime(hours, minutes);
+		const isSecondHalf = fraction * 2 > 0.5;
+		this.showNowTime(hours, minutes, isSecondHalf);
 		setTimeout(() => {
 			this.startAnimation();
 		}, 2000)
