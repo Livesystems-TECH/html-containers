@@ -21,17 +21,17 @@ img.photo.zoomed {
     height: 115%;
     /* CSS force 3d processing trick */
     transform: translate3d(0,0,0);
-    transition: height linear 15s 3s;
+    transition: height linear 15s 2s;
 }
 img.photo.to-left {
     /* CSS force 3d processing trick */
     transform: translate3d(-10%,0,0);
-    transition: transform linear 15s 3s;
+    transition: transform linear 15s 2s;
 }
 img.photo.to-right {
     /* CSS force 3d processing trick */
     transform: translate3d(10%,0,0);
-    transition: transform linear 15s 3s;
+    transition: transform linear 15s 2s;
 }
 .text-wrapper {
     position: absolute;
@@ -44,11 +44,11 @@ img.photo.to-right {
 .text-container {
     position: relative;
     top: 0;
-    left: -100%;
+    left: -50%;
     opacity: 0;
     color: #f5f5f5;
     line-height: 1.4;
-    transition: all ease-out 2s, opacity ease-out 2s;
+    transition: all linear 1s;
     transform: translate3d(0,0,0);
 }
 .text-container.in {
