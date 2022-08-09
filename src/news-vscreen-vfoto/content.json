@@ -1,5 +1,7 @@
 {
+  "bgColor": "#da374c",
   "animation": "move-to-right",
+  "duration": 15,
   "title": "WISSEN",
   "text": "Es gibt 208 Schweizer Berge, die mehr als 3000 Meter hoch sind."
 }

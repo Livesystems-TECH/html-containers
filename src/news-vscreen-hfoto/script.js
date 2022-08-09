@@ -50,17 +50,17 @@ LSContainer.prototype.animate = function() {
 	switch (animation) {
 		case 'zoom':
 			imgElement.classList.add('zoomed');
-			return;
+			break;
 		case 'move-to-left':
 			imgElement.classList.add('to-left');
-			return;
+			break;
 		case 'move-to-right':
 			imgElement.classList.add('to-right');
-			return;
+			break;
 		case 'none':
 		default:
-			return;
 	}
+	setTimeout(() => imgElement.classList.add('in'), 0);
 };
 LSContainer.prototype.play = function() {
 	// uncomment to see live fps value on screen
@@ -70,7 +70,6 @@ LSContainer.prototype.play = function() {
 	const duration = this.get('duration')
 	bgColor && document.documentElement.style.setProperty('--duration', `${duration}s`);
 	duration && document.documentElement.style.setProperty('--bgcolor', bgColor);
-	const wrapper = document.getElementById('wrapper');
 	const text = document.getElementById('text');
 	const textContainer = document.getElementById('text-container');
 	const title = document.getElementById('title');
