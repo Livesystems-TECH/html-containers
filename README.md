@@ -150,7 +150,9 @@ document.addEventListener('setup', function(event) {
 For development process please use `test-vertical.html` included in each example.   
 There you can open container in 9:16 viewport to check hot it looks like on vertical screen.       
 Just open `test-vertical.html` file with a browser and press `play`.    
-You'll find there also validate function to check if container is working properly.
+You'll find there also validate function to check if container is working properly.   
+
+**For fullscreen mode add hash #fullscreen at the end of url** 
 > TIP: To be sure that you use compatible with webKit CSS / JS features, run it with Safari browser
 
 ### Performance

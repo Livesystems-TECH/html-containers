@@ -3,16 +3,15 @@
         <script>
           document.addEventListener("DOMContentLoaded", function() {
             const iframe = document.getElementById('iframe');
+            const frameWindow = iframe.contentWindow;
+            const controls = document.getElementById('controls');
+            let topOffset = 25;
             const startButton = document.getElementById('start');
             const validateButton = document.getElementById('validate');
-
             const screenHeight = window.innerHeight|| document.documentElement.clientHeight|| document.body.clientHeight;
             const width = screenHeight * 9 / 16;
-            iframe.style.height = screenHeight - 25 + 'px';
-            iframe.style.width = width + 'px';
-            const frameWindow = iframe.contentWindow;
+
             if (frameWindow && frameWindow.document) {
-              const frameWindow = iframe.contentWindow;
               function resetIframe() {
                   if (!!window.chrome) {
                       frameWindow.document.open();
@@ -21,10 +20,18 @@
                   }
                   frameWindow.location.reload();
               }
-              startButton.addEventListener('click', function () {
+              function play() {
                 resetIframe();
                 setTimeout(() =>  frameWindow.document.dispatchEvent(new CustomEvent('test')), 500)
-              });
+              }
+              if (window.location.hash && window.location.hash === '#fullscreen') {
+                topOffset = 0;
+                controls.classList.add('d-none');
+                setTimeout(() =>  frameWindow.document.dispatchEvent(new CustomEvent('test')), 500)
+              }
+              iframe.style.height = screenHeight - topOffset + 'px';
+              iframe.style.width = width + 'px';
+              startButton.addEventListener('click', play);
               validateButton.addEventListener('click', function () {
                 const invalidTimeout = setTimeout(() => alert('INVALID!\nNo response / no play started'), 1000);
                 function showResult(message) {
@@ -59,16 +66,16 @@
         </script>
         <style>
             * { box-sizing: border-box; }
-            body { margin: 0; display: flex; justify-content: center }
-            .wrapper { display: flex; flex-direction: column }
-            #start { height: 25px }
-            .actions { display: flex }
+            body { margin: 0; display: flex; justify-content: center; }
+            .wrapper { display: flex; flex-direction: column; height: 100%; }
+            .actions { display: flex; height: 25px }
             .actions button { width: 100% }
+            .d-none { display: none }
         </style>
     </head>
     <body>
         <div class="wrapper">
-            <div class="actions">
+            <div id="controls" class="actions">
                 <button id="start">Play</button>
                 <button id="validate">Validate</button>
             </div>
