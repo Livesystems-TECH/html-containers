@@ -14,7 +14,7 @@
             if (frameWindow && frameWindow.document) {
               const frameWindow = iframe.contentWindow;
               function resetIframe() {
-                  if (typeof window.webkitConvertPointFromNodeToPage !== 'function') {
+                  if (!!window.chrome) {
                       frameWindow.document.open();
                       frameWindow.document.write('');
                       frameWindow.document.close();
