@@ -67,8 +67,8 @@ img.photo.to-right.in {
     left: -50%;
     opacity: 0;
     color: #f5f5f5;
-    line-height: 1.4;
-    transition: all linear 1.5s;
+    line-height: calc(var(--vh) * 5.5);
+    transition: left linear 1.5s;
     transform: translate3d(0,0,0);
 }
 .text-container.in {
