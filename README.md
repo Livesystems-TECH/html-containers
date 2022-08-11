@@ -24,7 +24,8 @@
 
 [weather](https://codepen.io/gandboy91/full/RwQEgVz)  
 [clock](https://codepen.io/gandboy91/full/KKomxzX)    
-[news / interesting facts](https://codepen.io/gandboy91/full/BarmOey)     
+[news / facts (photo portrait)](https://codepen.io/gandboy91/full/BarmOey)    
+[news / facts (photo landscape)](https://codepen.io/gandboy91/full/xxWaVvE)    
 [sunrise/sunset](https://codepen.io/gandboy91/full/RwMGKbr)   
 [water temperature](https://codepen.io/gandboy91/full/ZExyWPG)
 
