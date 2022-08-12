@@ -1,7 +1,7 @@
 <html>
 <head title="test-vertical">
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+        window.onload = function() {
             const iframe = document.getElementById('iframe');
             const frameWindow = iframe.contentWindow;
             const topOffset = 25;
@@ -63,7 +63,7 @@
                     frameWindow.document.dispatchEvent(setupEvent);
                 });
             }
-        });
+        };
     </script>
     <style>
         * { box-sizing: border-box; }
