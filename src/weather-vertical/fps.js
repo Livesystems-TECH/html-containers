@@ -1,20 +1,6 @@
 function watchFps() {
     const container = document.createElement('div');
     container.innerHTML = '<div class="fps-meter">fps: <span id="fps"></span></div>';
-    const containerStyle = document.createElement('style');
-    containerStyle.innerHTML = `
-      .fps-meter {
-        position: absolute;
-        left: 20px;
-        bottom: 20px;
-        color: white;
-      }
-      .fps-meter #fps {
-        margin-left: 5px;
-        padding: 5px;
-      }
-    `;
-    document.head.appendChild(containerStyle);
     document.body.appendChild(container);
 
     window.requestAnimFrame = (function() {

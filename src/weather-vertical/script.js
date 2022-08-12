@@ -102,7 +102,8 @@ LSContainer.prototype.adjustSize = function(initialCardsWidth) {
 }
 
 LSContainer.prototype.play = function() {
-	window.watchFps && window.watchFps();
+	// uncomment to see live fps value on screen
+	// window.watchFps && window.watchFps();
 	this.adjustSize(720);
 	const place = this.get('place');
 	const day1 = this.get('day1');

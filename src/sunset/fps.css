@@ -1,0 +1,10 @@
+.fps-meter {
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+    color: white;
+}
+.fps-meter #fps {
+    margin-left: 5px;
+    padding: 5px;
+}

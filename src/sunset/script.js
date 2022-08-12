@@ -170,9 +170,8 @@ LSContainer.prototype.showSunInfo = function() {
 }
 
 LSContainer.prototype.play = function() {
-	if (window.watchFps) {
-		window.watchFps();
-	}
+	// uncomment to see live fps value on screen
+	// window.watchFps && window.watchFps();
 	this.adjustSize();
 	const sunsetContainer = document.getElementById('sunset-container');
 	sunsetContainer.classList.remove('initial');

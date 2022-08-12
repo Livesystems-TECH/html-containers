@@ -1,11 +1,11 @@
 @import 'clock.css';
 @import 'flip-clock.css';
+@import 'fps.css';
 
 html {
 	height: 100%;
 	-webkit-font-smoothing: antialiased;
 	text-rendering: optimizeLegibility;
-	overflow: hidden;
 }
 * {
 	box-sizing: border-box;

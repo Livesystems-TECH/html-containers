@@ -4,6 +4,7 @@
 @import 'cloud.css';
 @import 'rain.css';
 @import 'thunder.css';
+@import 'fps.css';
 
 html {
 	height: 100%;
