@@ -1,8 +1,7 @@
 .ls-thunder { height: 100%; }
 .ls-thunder .cloud-wrapper { height: 120px; top: 0; width: 150px; padding-top: 10px; }
-.ls-thunder .cloud:before, .ls-thunder .cloud ul li {
+.ls-thunder .cloud:before, .ls-thunder .cloud {
     margin-bottom: 40px;
-    background-color: #92a4b6;
 }
 .period-card.in .ls-thunder .cloud-wrapper {
     opacity: 1;
@@ -57,7 +56,7 @@
     0% { opacity: 0; top: -50px; }
     70% { opacity: 0; top: -50px; }
     85% { opacity: 1; top: 110px; }
-    100%{ opacity: 1; top: 95px; }
+    100%{ opacity: 1; top: 90px; }
 }
 @keyframes light {
     0% { background: transparent; }

@@ -1,7 +1,6 @@
 .ls-rain .cloud-wrapper { height: 120px; width: 150px; top: 0; padding-top: 10px; }
 .ls-rain .cloud {
     margin-bottom: 40px;
-    background-color: #92a4b6;
 }
 
 .period-card.in .ls-rain .cloud-wrapper {
@@ -11,30 +10,28 @@
 }
 .simple-rain {
     position: relative;
-    bottom: 0px;
-    left: 10px;
+    bottom: 0;
+    left: 0;
 }
-.simple-rain ul{
+.simple-rain ul {
     list-style: none;
     margin: 0;
-    padding: 0px;
+    padding: 0;
 }
-.simple-rain ul li{
+.simple-rain ul li {
+    opacity: 0;
     float: left;
     position: absolute;
-    bottom: 50px;
+    bottom: 55px;
     left: 50px;
     margin-left: 20px;
-    background: #6ab9e9;
     height: 40px;
-    width: 10px;
-    border-radius: 360px;
-    transform: rotate(35deg);
-    opacity: 0;
+    width: 35px;
+    background: url('drop.svg') center center no-repeat;
 }
 
 .period-card.in .ls-rain .simple-rain ul li:first-child{
-    left: 0px;
+    left: 0;
     animation: rain-drop 1s .8s linear forwards;
 }
 .period-card.in .ls-rain .simple-rain ul li:nth-child(2){
@@ -50,5 +47,5 @@
     0% { opacity: 0; bottom: 100px; }
     70% { opacity: 0; bottom: 100px; }
     85% { opacity: 1; bottom: -5px; }
-    100%{ opacity: 1; bottom: 10px; }
+    100%{ opacity: 1; bottom: 15px; }
 }
