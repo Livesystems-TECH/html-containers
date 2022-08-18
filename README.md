@@ -24,7 +24,7 @@
 
 [clock](https://codepen.io/gandboy91/full/KKomxzX)    
 [news / facts (photo portrait)](https://codepen.io/gandboy91/full/BarmOey)    
-[news / facts (photo landscape)](https://codepen.io/gandboy91/full/xxWaVvE)
+[news / facts (photo landscape)](https://codepen.io/gandboy91/full/xxWaVvE)  
 [water temperature](https://codepen.io/gandboy91/full/ZExyWPG)
 
 \* *Black cityscreen is added for better look/feel impression*  
