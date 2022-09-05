@@ -1,6 +1,8 @@
 function LSContainer() {
   this.data = {};
-  this.testData = {};
+  this.testData = {
+    temp: 19.3
+  };
 }
 
 LSContainer.prototype.init = function () {
@@ -28,21 +30,26 @@ LSContainer.prototype.adjustSize = function() {
 }
 
 LSContainer.prototype.setup = function(event) {
-  this.adjustSize();
-  const detail = event.detail || {};
-  Object.entries(detail).forEach(
-    ([key, value]) => this.set(key, value)
-  );
-  return fetch('content.json')
-    .then(response => response.json())
-    .then(content => Object.entries(content).forEach(
+  // change to true for development without local server
+  const useFakeJson = false;
+  return this.getVariables(event, useFakeJson)
+    .then(data => Object.entries(data).forEach(
       ([key, value]) => this.set(key, value)
     ))
     .then(() => this.adjustSize())
     .then(() => this.ready());
 };
+
+LSContainer.prototype.getVariables = function (event, fakeJson = false) {
+  return fakeJson
+    ? Promise.resolve(event.detail || {})
+    : fetch('content.json')
+      .then(response => response.json());
+}
+
 LSContainer.prototype.play = function () {
   // window.watchFps && window.watchFps();
+  this.adjustSize()
   const temp = document.getElementById('temp');
   const content = document.getElementById('content');
   temp.textContent = this.get('temp') + '°';

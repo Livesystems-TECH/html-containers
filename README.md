@@ -10,7 +10,8 @@
   `cp ./src/sunset ./custom/sunset-custom`
 - modify html/css/js as you want (*don't rename or remove **`LSContainer`** methods*)
 - make sure you don't remove **index.html** or **script.js**
-- open `./custom/sunset-custom/test-vertical.html` in browser
+- in `index.html` uncomment line with `dev.js` import
+- open `index.html` to see container in development mode (check Development section)       
 - validate/preview your container during development
 - Archive container as `zip` when ready. Please make it from container root level:
   ```
@@ -27,6 +28,51 @@
 
 \* *Black cityscreen is added for better look/feel impression*  
 \** *Livesystems logo is just a placeholder*
+
+## Development 
+
+For development process please import `dev.js` file included in each example.   
+In dev mode you can open container in 9:16 viewport to check its appearance on vertical screen.       
+Just open `test-vertical.html` file with a browser and press `play`.    
+You'll find there also validate function to check if container is working properly.
+
+**For fullscreen mode add hash #fullscreen at the end of url**
+> TIP: To be sure that you use compatible with webKit CSS / JS features, run it with Safari browser
+
+
+#### 1. File system     
+Easy way to start container locally is to open `index.html` via browser.     
+However, this way has some caveats:      
+
+Deployed container in "production" is served by local web-server on device.          
+It's not 100% the same as opening `index.html` from file system.      
+There's some limitations for `file://` protocol.     
+
+If you use local `JSON` file with variables, you should fake it during development.     
+It's already considered in examples, so you can simply:  
+- go to `script.js` -> `setup` method 
+- set `useFakeJson` to `true`     
+
+if you don't want to use workarounds and care about fake/test data, you should use local web server.     
+here's some options
+
+#### 2. IDE web-server
+If you use some smart IDE like JetBrains product (WebStorm, PHPStorm, Intellij Idea) or VSCode       
+you may want to try built-in web-servers that they provide.     
+It's easy to start as 1 click and as a result you have container served over `https://`.       
+
+- Jet brains IDEs have it of the box - just open html file in IDE and press browser icon.       
+[docs](https://www.jetbrains.com/help/idea/php-built-in-web-server.html#ws_html_preview_output_built_in_browser)
+
+- VSCode requires to install a plugin. For example [this one](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer)
+
+#### 3. Local web server
+If you already use some local server you can just serve containers folder from there.     
+Some possible options here:    
+- nginx server locally or via docker image
+- Node.js with Express
+- PHP8 built-in server (`php -s`)
+- Python `http.server`
 
 ## Features and capability
 
@@ -69,10 +115,9 @@ Result file should be archived as a `.zip`
 
 **Additional files / imports**:
 - css files should be listed as a `<link>` in index.html or be imported via css `@import`
-- js files should be listed as a `<script>` in index.html or be imported via ESM `import`.  
-:warning: In this case make sure, your `script.js` file is included as a module:     
-`<script type="module" src="script.js" defer></script>`
+- js files should be listed as a `<script>` in index.html
 - Custom fonts can be added as `.woff` files (preferably as woff has smaller size).    
+- Custom data can be added as `.json` file to the root folder and be fetched via `XMLHttpRequest` or `fetch`    
 
 **Custom Fonts**   
 
@@ -93,7 +138,6 @@ body {
   font: Myfont, Arial, sans-serif;
 }
 ```
-
 
 **JS requirements**:  
 > :warning: **All listed requirements are already implemented in `LsContainer` class**   
@@ -139,17 +183,9 @@ document.addEventListener('setup', function(event) {
 });
 ```
 
+Other option is to write variables in `json` file and put it to the container root.
+
 ## Tips and known issues
-
-### Development & Validation
-
-For development process please use `test-vertical.html` included in each example.   
-There you can open container in 9:16 viewport to check hot it looks like on vertical screen.       
-Just open `test-vertical.html` file with a browser and press `play`.    
-You'll find there also validate function to check if container is working properly.   
-
-**For fullscreen mode add hash #fullscreen at the end of url** 
-> TIP: To be sure that you use compatible with webKit CSS / JS features, run it with Safari browser
 
 ### Performance
 

@@ -14,6 +14,7 @@ function watchFps() {
         padding: 5px;
       }
     `;
+    containerStyle.nonce = btoa('livesystems');
     document.head.appendChild(containerStyle);
     document.body.appendChild(container);
 

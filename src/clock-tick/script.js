@@ -29,14 +29,18 @@ LSContainer.prototype.ready = function() {
 	// sends ptvready event to own document where parent frame listens to
 	document.dispatchEvent(event);
 };
+
 LSContainer.prototype.setup = function(event) {
-	const detail = event.detail || {};
-	Object.entries(detail).forEach(
-		([key, value]) => this.set(key, value)
-	);
-	this.adjustSize(400);
-	this.ready();
+	return this.getVariables(event)
+		.then(data => Object.entries(data).forEach(
+			([key, value]) => this.set(key, value)
+		))
+		.then(() => this.ready());
 };
+
+LSContainer.prototype.getVariables = function (event) {
+	return Promise.resolve(event.detail || {});
+}
 
 LSContainer.prototype.adjustSize = function(initialClockSize, offset = 40) {
 	const clockElement = document.getElementById('clock');
@@ -155,7 +159,8 @@ LSContainer.prototype.startClock = function(secondElement, minuteElement, hourEl
 
 LSContainer.prototype.play = function() {
 	// uncomment to see live fps value on screen
-	// window.watchFps && window.watchFps();
+	window.watchFps && window.watchFps();
+	this.adjustSize(400);
 	this.initClock();
 	document.dispatchEvent(new Event('playStarted'));
 };
@@ -185,8 +190,8 @@ function attachTo(host, element, rotation) {
 }
 
 LSContainer.prototype.emulateStart = function () {
-	this.setup({ detail: this.testData });
-	this.play();
+	this.setup({ detail: this.testData })
+		.then(() => this.play());
 }
 
 window.onload = function() {

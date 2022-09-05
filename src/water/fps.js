@@ -4,7 +4,6 @@ function watchFps() {
     const containerStyle = document.createElement('style');
     containerStyle.innerHTML = `
       .fps-meter {
-        z-index: 999;
         position: absolute;
         left: 20px;
         bottom: 20px;
@@ -15,6 +14,7 @@ function watchFps() {
         padding: 5px;
       }
     `;
+    containerStyle.nonce = btoa('livesystems');
     document.head.appendChild(containerStyle);
     document.body.appendChild(container);
 
