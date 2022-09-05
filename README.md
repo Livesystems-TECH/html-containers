@@ -31,14 +31,12 @@
 
 ## Development 
 
-For development process please import `dev.js` file included in each example.   
-In dev mode you can open container in 9:16 viewport to check its appearance on vertical screen.       
-Just open `test-vertical.html` file with a browser and press `play`.    
-You'll find there also validate function to check if container is working properly.
+For development process please make sure to import `dev.js` file included in each example.    
+In dev mode you can open and validate container in 9:16 viewport to check its appearance on vertical screen.       
 
-**For fullscreen mode add hash #fullscreen at the end of url**
 > TIP: To be sure that you use compatible with webKit CSS / JS features, run it with Safari browser
 
+How to launch container:    
 
 #### 1. File system     
 Easy way to start container locally is to open `index.html` via browser.     

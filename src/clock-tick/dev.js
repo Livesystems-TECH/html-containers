@@ -53,7 +53,7 @@ function play() {
   }
   const height = ~~(window.screen.availHeight || window.outerHeight || window.innerHeight);
   const width = ~~(height * 9 / 16);
-  playPopup = window.open('index.html#play-dev', 'play', `width=${width} height=${height}`);
+  playPopup = window.open('index.html#play-dev', 'play', `width=${width}, height=${height}`);
   playPopup.focus();
 }
 
@@ -64,11 +64,17 @@ function validate() {
   }
   const height = ~~(window.screen.availHeight || window.outerHeight || window.innerHeight);
   const width = ~~(height * 9 / 16);
-  validatePopup = window.open('index.html#validate', 'validate', `width=${width} height=${height}`);
+  validatePopup = window.open('index.html#validate', 'validate', `width=${width}, height=${height}`);
   validatePopup.focus();
 }
 
 document.addEventListener('DOMContentLoaded', function() {
+  if (window.location.hash && ['#play-dev', '#validate'].includes(window.location.hash)) {
+    const height = ~~(window.screen.availHeight || window.outerHeight);
+    const effectiveHeight = ~~(window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight);
+    const width = ~~(effectiveHeight * 9 / 16);
+    window.resizeTo(width, height);
+  }
   if (window.location.hash && window.location.hash === '#play-dev') {
     setTimeout(() =>  window.document.dispatchEvent(new CustomEvent('test')), 200)
     return;
