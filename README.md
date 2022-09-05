@@ -49,8 +49,8 @@ It's not 100% the same as opening `index.html` from file system.
 There's some limitations for `file://` protocol.     
 
 If you use local `JSON` file with variables, you should fake it during development.     
-It's already considered in examples, so you can simply:  
-- go to `script.js` -> `setup` method 
+It's already considered in examples, so you can simply:    
+- go to `script.js` to the very top of the file     
 - set `useFakeJson` to `true`     
 
 if you don't want to use workarounds and care about fake/test data, you should use local web server.     

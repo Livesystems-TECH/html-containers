@@ -1,3 +1,6 @@
+// change to true for development without local server
+const useFakeJson = false;
+
 function LSContainer() {
   this.data = {};
   this.testData = {
@@ -30,8 +33,6 @@ LSContainer.prototype.adjustSize = function() {
 }
 
 LSContainer.prototype.setup = function(event) {
-  // change to true for development without local server
-  const useFakeJson = false;
   return this.getVariables(event, useFakeJson)
     .then(data => Object.entries(data).forEach(
       ([key, value]) => this.set(key, value)
