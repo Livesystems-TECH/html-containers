@@ -35,6 +35,7 @@ LSContainer.prototype.setup = function(event) {
 		.then(data => Object.entries(data).forEach(
 			([key, value]) => this.set(key, value)
 		))
+		.then(() => this.adjustSize(400))
 		.then(() => this.ready());
 };
 
@@ -45,9 +46,9 @@ LSContainer.prototype.getVariables = function (event) {
 LSContainer.prototype.adjustSize = function(initialClockSize, offset = 40) {
 	const clockElement = document.getElementById('clock');
 	if (clockElement) {
-		const screenWidth  = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-		const screenHeight = window.innerHeight|| document.documentElement.clientHeight|| document.body.clientHeight;
-		const smallestSide = Math.min(screenWidth, screenHeight);
+		// for f-12 inner width/height can be 0 on loading, but outer values are always set
+		const screenWidth = window.innerWidth || window.outerWidth;
+		const screenHeight = window.innerHeight || window.outerHeight;		const smallestSide = Math.min(screenWidth, screenHeight);
 		const proportion = +(smallestSide / (initialClockSize + offset)).toFixed(2);
 		clockElement.style.zoom = proportion * 100 + '%';
 	}
@@ -161,7 +162,7 @@ LSContainer.prototype.startClock = function(secondElement, minuteElement, hourEl
 LSContainer.prototype.play = function() {
 	// uncomment to see live fps value on screen
 	// window.watchFps && window.watchFps();
-	this.adjustSize(400);
+
 	this.initClock();
 	document.dispatchEvent(new Event('playStarted'));
 };

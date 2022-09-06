@@ -28,7 +28,9 @@ LSContainer.prototype.ready = function () {
 };
 
 LSContainer.prototype.adjustSize = function() {
-  const vh = (window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight) * 0.01;
+  // for f-12 inner width/height can be 0 on loading, but outer values are always set
+  const screenHeight = window.innerHeight || window.outerHeight;
+  const vh = screenHeight * 0.01;
   document.documentElement.style.setProperty('--vh', vh + 'px');
 }
 
@@ -50,7 +52,7 @@ LSContainer.prototype.getVariables = function (event, fakeJson = false) {
 
 LSContainer.prototype.play = function () {
   // window.watchFps && window.watchFps();
-  this.adjustSize()
+
   const temp = document.getElementById('temp');
   const content = document.getElementById('content');
   temp.textContent = this.get('temp') + '°';
