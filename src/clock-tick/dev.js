@@ -1,4 +1,8 @@
 function renderControls() {
+  const screenHeight = window.innerHeight || window.outerHeight;
+  const vh = screenHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', vh + 'px');
+
   const devWrapper = document.createElement('div');
   devWrapper.id = 'dev-wrapper';
   devWrapper.classList.add('dev-wrapper')
@@ -12,8 +16,10 @@ function renderControls() {
         position: absolute;
         left: 0;
         top: 0;
-        width: 100%;
         height: 100%;
+        width: 100%;
+        height: 100vh;
+        height: calc(var(--vh, 1vh) * 100);
         background: #C6E6E7;
         z-index: 999;
         display: flex;
