@@ -12,6 +12,7 @@ html {
 body {
 	background: radial-gradient(circle, #005b50 40%, #000000 100%);
 	font-family: "Monaco", Monaco, monospace;
+	overflow: hidden;
 }
 .wrapper {
 	position: absolute;

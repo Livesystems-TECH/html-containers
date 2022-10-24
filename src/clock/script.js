@@ -36,6 +36,7 @@ LSContainer.prototype.setup = function(event) {
 			([key, value]) => this.set(key, value)
 		))
 		.then(() => this.adjustSize(400))
+		.then(() => this.initClock())
 		.then(() => this.ready());
 };
 
@@ -48,7 +49,8 @@ LSContainer.prototype.adjustSize = function(initialClockSize, offset = 40) {
 	if (clockElement) {
 		// for f-12 inner width/height can be 0 on loading, but outer values are always set
 		const screenWidth = window.innerWidth || window.outerWidth;
-		const screenHeight = window.innerHeight || window.outerHeight;		const smallestSide = Math.min(screenWidth, screenHeight);
+		const screenHeight = window.innerHeight || window.outerHeight;
+		const smallestSide = Math.min(screenWidth, screenHeight);
 		const proportion = +(smallestSide / (initialClockSize + offset)).toFixed(2);
 		clockElement.style.zoom = proportion * 100 + '%';
 	}
@@ -57,9 +59,6 @@ LSContainer.prototype.adjustSize = function(initialClockSize, offset = 40) {
 LSContainer.prototype.initClock = function() {
 	const container = document.getElementById('clock');
 	const dynamicElements = container.querySelector('.dynamic');
-	const hourElement = container.querySelector('.hour');
-	const minuteElement = container.querySelector('.minute');
-	const secondElement = container.querySelector('.second');
 
 	function addMinuteSegment(n) {
 		const className = n % 5 === 0 ? 'major' : 'whole';
@@ -80,8 +79,6 @@ LSContainer.prototype.initClock = function() {
 			addHourSegment(i / 5);
 		}
 	}
-
-	setTimeout(() => this.startClock(secondElement, minuteElement, hourElement), 0)
 }
 
 LSContainer.prototype.updateFlipPrevDigit = function(container, digit, maxDigit = 9) {
@@ -138,6 +135,12 @@ LSContainer.prototype.turnFlipClock = function(hours, minutes, seconds) {
 
 LSContainer.prototype.startClock = function(secondElement, minuteElement, hourElement) {
 	let prevSeconds = 61;
+	const now = new Date();
+	const seconds = now.getSeconds();
+	const hours = now.getHours();
+	const minutes = now.getMinutes();
+	this.turnFlipClock(hours, minutes, seconds);
+
 	const turnFlipClock = this.turnFlipClock.bind(this);
 	function draw() {
 		const now = new Date();
@@ -163,7 +166,12 @@ LSContainer.prototype.play = function() {
 	// uncomment to see live fps value on screen
 	// window.watchFps && window.watchFps();
 
-	this.initClock();
+	const container = document.getElementById('clock');
+	const hourElement = container.querySelector('.hour');
+	const minuteElement = container.querySelector('.minute');
+	const secondElement = container.querySelector('.second');
+
+	this.startClock(secondElement, minuteElement, hourElement);
 	document.dispatchEvent(new Event('playStarted'));
 };
 
@@ -193,7 +201,7 @@ function attachTo(host, element, rotation) {
 
 LSContainer.prototype.emulateStart = function () {
 	this.setup({ detail: this.testData })
-		.then(() => this.play());
+		.then(() => this.play())
 }
 
 window.onload = function() {
@@ -203,4 +211,3 @@ window.onload = function() {
 	// uncomment next line to test on PC
 	// container.emulateStart()
 };
-
